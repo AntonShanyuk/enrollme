@@ -1,0 +1,61 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script src="libs/jquery-1.11.1.min.js"></script>
+    <script src="libs/underscore-min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="libs/moment-with-langs.min.js"></script>
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.min.js"></script>
+    <script src="libs/angular-resource.js"></script>
+    <script src="libs/ui-bootstrap-tpls-0.11.0.min.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/httpPersistence/Contacts.js"></script>
+    <script src="app/modules/confirm/controller.js"></script>
+    <script src="app/modules/contact-details/controller.js"></script>
+    <script src="app/modules/contacts/controller.js"></script>
+    <script src="app/modules/home/controller.js"></script>
+    <script src="app/modules/today/controller.js"></script>
+</head>
+<body ng-app="enrollme">
+    <div ng-controller="MainController">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Home</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="collapse">
+                    <ul class="nav navbar-nav">
+                        <li ng-class="{active: isActive('/today')}">
+                            <a href="#today">Today</a>
+                        </li>
+                        <li ng-class="{active: isActive('/contacts')}">
+                            <a href="#contacts">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div ng-view>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <form ng-submit="submit()" role="form" class="relative">
+                <div class="input-group">
+                    <input type="text" ng-model="input" ng-change="change()" ng-keyup="keyup($event)" placeholder="{{activeContact.name}}" class="form-control big-input" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn big-input" ng-class="{'btn-default': contacts.length, 'btn-success': !contacts.length && input }">
+                            <span ng-if="contacts.length"><i class="glyphicon glyphicon-share-alt"></i> Select</span>
+                            <span ng-if="!contacts.length && input"><i class="glyphicon glyphicon-plus"></i> Add</span>
+                        </button>
+                    </span>
+                </div>
+                <div class="found-contacts" ng-if="contacts.length">
+                    <div ng-repeat="contact in contacts" class="clickable found-contact" ng-class="{active: contact == activeContact}" ng-click="goToDetails(contact)" ng-mousedown="setActive(contact)">
+                        {{contact.name}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
