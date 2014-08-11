@@ -36,7 +36,7 @@ a, a:hover {
 }
 
 .home-link {
-    height: 200px;
+    height: 220px;
     border-radius: 5px;
     margin: 10px 0;
     padding-top: 10px;
@@ -63,11 +63,18 @@ a, a:hover {
     background-color: lavender;
 }
 
+.vertical-offset {
+    height: 30px;
+}
+
+.vertical-offset-home {
+    height: 200px;
+}
+
 .week {
     background-color: lavenderblush;
-    font-size: 50px;
+    font-size: 45px;
     vertical-align: middle;
-    padding-top: 50px;
 }
 
 .home-contacts {
@@ -76,28 +83,21 @@ a, a:hover {
     padding-top: 30px;
 }
 
-.home {
-    margin-top: 15%;
-}
-
 .relative {
     position: relative;
 }
 
-.big-input {
-    height: 55px;
-    font-size: 25px;
-    outline: none;
-    box-shadow: none !important;
+.absolute {
+    position: absolute;
 }
 
-    .big-input:focus {
-        border-color: #ccc;
-    }
-
-    .big-input.btn {
-        width: 200px;
-    }
+.big-input, .big-input:focus, .big-input:active {
+    height: 55px;
+    font-size: 25px;
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ccc;
+}
 
 .found-contacts {
     margin-top: 2px;
@@ -122,18 +122,21 @@ a, a:hover {
     padding: 10px 0;
 }
 
-.notification-right {
-    position: absolute;
-    right: -50px;
-    top: 5px;
-    font-size: 35px;
-    color: green;
-}
-
 .visible {
     opacity: 1;
 }
 
 .invisible {
     opacity: 0;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.button-ok-notification {
+    color: green;
+    top: 10px;
+    left: 12px;
 }

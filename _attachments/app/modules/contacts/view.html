@@ -6,8 +6,8 @@
                     <input type="text" ng-model="input" ng-change="change()" ng-keyup="keyup($event)" placeholder="{{activeContact.name}}" class="form-control big-input" />
                     <span class="input-group-btn">
                         <button type="submit" class="btn big-input" ng-class="{'btn-default': contacts.length, 'btn-success': !contacts.length }">
-                            <span ng-if="contacts.length"><i class="glyphicon glyphicon-share-alt"></i> Select</span>
-                            <span ng-if="!contacts.length"><i class="glyphicon glyphicon-plus"></i> Add</span>
+                            <i ng-if="contacts.length" class="glyphicon glyphicon-share-alt"></i>
+                            <i ng-if="!contacts.length" class="glyphicon glyphicon-plus"></i>
                         </button>
                     </span>
                 </div>

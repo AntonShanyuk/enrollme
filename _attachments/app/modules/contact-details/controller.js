@@ -1,7 +1,9 @@
 ﻿app.controller('ContactDetailsController', function ($scope, $routeParams, $modal, $location, $timeout, Contacts) {
     $scope.id = $routeParams.id;
-    Contacts.get({ id: $scope.id }).$promise.then(function (contact) {
-        $scope.contact = contact;
+    $scope.$on('$viewContentLoaded', function (event) {
+        Contacts.get({ id: $scope.id }).$promise.then(function (contact) {
+            $scope.contact = contact;
+        });
     });
 
     $scope.delete = function () {

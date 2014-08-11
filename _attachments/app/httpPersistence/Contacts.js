@@ -1,8 +1,7 @@
 ﻿app.factory('Contacts', function ($resource) {
-    var couchDbParams = { id: "@_id", rev: "@_rev" };
     function CouchDbAction(extend) {
         this.method = 'GET';
-        this.params = couchDbParams;
+        this.params = { id: "@_id", rev: "@_rev" };
 
         var originalObject;
         this.transformRequest = function (contact) {
@@ -21,9 +20,9 @@
         post: new CouchDbAction({ method: 'POST', params: {}, url: '../..' }),
         put: new CouchDbAction({ method: 'PUT' }),
         'delete': { method: 'DELETE' },
-        get: { method: 'GET', url: '../../:id' },
+        get: { method: 'GET', url: encodeURI('../../:id'), params: { v: function () { return new Date().getTime() } } },
         query: {
-            method: 'GET', isArray: false, url: '_view/contact?limit=20&group=true&startkey=[":name"]&endkey=[":name\ufff0"]', transformResponse: function (response) {
+            method: 'GET', params: { v: function () { return new Date().getTime() } }, isArray: false, url: encodeURI('_view/contact?limit=20&group=true&startkey=[":name"]&endkey=[":name\ufff0"]'), transformResponse: function (response) {
                 var responseObject = JSON.parse(response);
                 var previousContact = null;
                 var values = _.chain(responseObject.rows).map(function (row) {
@@ -42,5 +41,5 @@
             }
         }
     }
-    return $resource('../../:id?rev=:rev', null, methods);
+    return $resource(encodeURI('../../:id?rev=:rev'), null, methods);
 });

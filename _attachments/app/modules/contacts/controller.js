@@ -1,8 +1,10 @@
-﻿app.controller('ContactsController', function ($scope, $location, Contacts) {
+﻿app.controller('ContactsController', function ($scope, $location, $timeout, Contacts) {
     $scope.contacts = [];
     $scope.input = '';
     $scope.activeContact = null;
-    loadContacts($scope, Contacts);
+    $scope.$on('$viewContentLoaded', function (event) {
+        loadContacts($scope, Contacts);
+    });
     $scope.submit = function () {
         if (!$scope.contacts.length) {
             var contact = { name: $scope.input };
@@ -18,9 +20,9 @@
     $scope.timeout = null;
     $scope.change = function () {
         if ($scope.timeout) {
-            window.clearTimeout($scope.timeout);
+            $timeout.cancel($scope.timeout);
         }
-        $scope.timeout = window.setTimeout(function () {
+        $scope.timeout = $timeout(function () {
             loadContacts($scope, Contacts);
         }, 200);
     };
