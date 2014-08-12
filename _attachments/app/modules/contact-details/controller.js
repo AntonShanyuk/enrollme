@@ -38,5 +38,7 @@
                 $scope.renamingOk = false;
             }, 500);
         });
-    }
+    };
+
+
 });
