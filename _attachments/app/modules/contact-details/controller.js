@@ -1,7 +1,7 @@
 ﻿app.controller('ContactDetailsController', function ($scope, $routeParams, $modal, $location, $timeout, Contacts) {
     $scope.id = $routeParams.id;
     $scope.$on('$viewContentLoaded', function (event) {
-        Contacts.get({ id: $scope.id }).$promise.then(function (contact) {
+        Contacts.get($scope.id).then(function (contact) {
             $scope.contact = contact;
         });
     });
@@ -23,7 +23,7 @@
         });
 
         dialog.result.then(function () {
-            Contacts.delete({ id: $scope.contact._id, rev: $scope.contact._rev }).$promise.then(function () {
+            Contacts.delete($scope.contact._id, $scope.contact._rev).then(function () {
                 $location.path('/contacts');
             });
         });
@@ -32,7 +32,7 @@
     $scope.renamingOk = false;
 
     $scope.update = function () {
-        Contacts.put($scope.contact).$promise.then(function () {
+        Contacts.put($scope.contact).then(function () {
             $scope.renamingOk = true;
             $timeout(function () {
                 $scope.renamingOk = false;

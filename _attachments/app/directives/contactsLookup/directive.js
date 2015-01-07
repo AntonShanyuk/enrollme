@@ -16,7 +16,7 @@
             $scope.submit = function () {
                 if (!$scope.contacts.length) {
                     var contact = { name: $scope.input.content };
-                    Contacts.post(contact).$promise.then(function (response) {
+                    Contacts.post(contact).then(function (response) {
                         $scope.contacts.splice(0, 0, contact);
                         loadContacts();
                     });
@@ -62,8 +62,8 @@
             };
 
             function loadContacts() {
-                Contacts.query({ name: $scope.input.content }).$promise.then(function (data) {
-                    $scope.contacts = data.rows;
+                Contacts.byName($scope.input.content).then(function (data) {
+                    $scope.contacts = data;
                     $scope.activeContact = $scope.contacts[0];
                 });
             }

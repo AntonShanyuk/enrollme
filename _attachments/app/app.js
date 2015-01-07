@@ -8,7 +8,7 @@ String.prototype.format = function () {
     });
 };
 
-var app = angular.module('enrollme', ['ngRoute', 'ngResource', 'ui.bootstrap']);
+var app = angular.module('enrollme', ['ngRoute', 'ngResource', 'ui.bootstrap', 'angularCouch']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/today', {
